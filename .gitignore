@@ -9,3 +9,5 @@ nbproject
 composer.lock
 .vagrant
 vendor/zfb
+vendor/kriswallsmith
+vendor/widmogrod

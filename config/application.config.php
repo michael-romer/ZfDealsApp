@@ -2,6 +2,8 @@
 return array(
     'modules' => array(
         'Application',
+        'AsseticBundle',
+        'ZfDeals'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
