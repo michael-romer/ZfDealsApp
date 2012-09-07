@@ -11,6 +11,6 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "dev-master",
         "zfb/zfb-vm": "dev-master",
-        "widmogrod/zf2-assetic-module": "dev-master"
+        "dlu/dlutwbootstrap": "dev-master"
     }
 }

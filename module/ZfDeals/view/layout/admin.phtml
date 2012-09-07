@@ -9,12 +9,14 @@
 
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
                     ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
-                    ->prependStylesheet($this->basePath() . '/css/style.css')
+                    ->prependStylesheet($this->basePath() . '/zf-deals/css/style.css')
                     ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
 
     <!-- Scripts -->
     <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-                                  ->prependFile($this->basePath() . '/js/jquery-1.7.2.min.js') ?>
+                    ->prependFile($this->basePath() . '/js/bootstrap.js')
+                    ->prependFile($this->basePath() . '/js/jquery-1.7.2.min.js') ?>
+
 
   </head>
 
@@ -29,10 +31,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?php echo $this->url('zf-deals\admin\home') ?>"><img src="<?php echo $this->basePath() ?>/images/pricetag.png" width="24px" height="24px "/> <?php echo $this->translate('ZfDeals - Administration') ?></a>
+          <a class="brand" href="<?php echo $this->url('zf-deals\admin\home') ?>"><?php echo $this->translate('ZfDeals - Administration') ?></a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produkte <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<?php echo $this->url('zf-deals\admin\product\add') ?>">Produkt hinzufügen</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

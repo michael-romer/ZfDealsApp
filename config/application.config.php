@@ -2,7 +2,7 @@
 return array(
     'modules' => array(
         'Application',
-        'AsseticBundle',
+        'DluTwBootstrap',
         'ZfDeals'
     ),
     'module_listener_options' => array(
