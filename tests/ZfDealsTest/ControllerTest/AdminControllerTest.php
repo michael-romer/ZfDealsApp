@@ -40,11 +40,7 @@ class AdminControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testShowFormOnValidationError()
     {
-        $fakeForm = $this->getMock('Zend\Form\Form', array('isValid'));
-        $fakeForm->expects($this->once())
-            ->method('isValid')
-            ->will($this->returnValue(false));
-
+        $fakeForm = $this->getFakeForm(false);
         $this->controller->setProductAddForm($fakeForm);
         $this->request->setMethod('post');
         $response = $this->controller->dispatch($this->request);
@@ -53,24 +49,14 @@ class AdminControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($formReturned->getName(), $fakeForm->getName());
     }
 
-    public function testCallMapperOnFormValidationSuccess()
+    public function testCallMapperOnFormValidationSuccessPersistenceSuccess()
     {
-        $fakeForm = $this->getMock('Zend\Form\Form', array('isValid', 'getData'));
-        $fakeForm->expects($this->once())
-            ->method('isValid')
-            ->will($this->returnValue(true));
-
+        $fakeForm = $this->getFakeForm();
         $fakeForm->expects($this->once())
             ->method('getData')
             ->will($this->returnValue(new \stdClass()));
 
-        $fakeMapper = $this->getMock('ZfDeals\Mapper\Product',
-            array('insert'),
-            array(),
-            '',
-            false
-        );
-
+        $fakeMapper = $this->getFakeMapper();
         $fakeMapper->expects($this->once())
             ->method('insert')
             ->will($this->returnValue(true));
@@ -79,5 +65,50 @@ class AdminControllerTest extends \PHPUnit_Framework_TestCase
         $this->controller->setProductMapper($fakeMapper);
         $this->request->setMethod('post');
         $response = $this->controller->dispatch($this->request);
+        $viewModelValues = $response->getVariables();
+        $this->assertTrue(isset($viewModelValues['success']));
+    }
+
+    public function testCallMapperOnFormValidationSuccessPersistenceError()
+    {
+        $fakeForm = $this->getFakeForm();
+        $fakeForm->expects($this->once())
+            ->method('getData')
+            ->will($this->returnValue(new \stdClass()));
+
+        $fakeMapper = $this->getFakeMapper();
+        $fakeMapper->expects($this->once())
+            ->method('insert')
+            ->will($this->throwException(new \Exception));
+
+        $this->controller->setProductAddForm($fakeForm);
+        $this->controller->setProductMapper($fakeMapper);
+        $this->request->setMethod('post');
+        $response = $this->controller->dispatch($this->request);
+        $viewModelValues = $response->getVariables();
+        $this->assertTrue(isset($viewModelValues['form']));
+        $this->assertTrue(isset($viewModelValues['insertError']));
+    }
+
+    public function getFakeForm($isValid = true)
+    {
+        $fakeForm = $this->getMock('Zend\Form\Form', array('isValid', 'getData'));
+        $fakeForm->expects($this->once())
+            ->method('isValid')
+            ->will($this->returnValue($isValid));
+
+        return $fakeForm;
+    }
+
+    public function getFakeMapper()
+    {
+        $fakeMapper = $this->getMock('ZfDeals\Mapper\Product',
+            array('insert'),
+            array(),
+            '',
+            false
+        );
+
+        return $fakeMapper;
     }
 }
