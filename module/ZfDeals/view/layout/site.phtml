@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <?php echo $this->headTitle('ZfDeals - Administration') ?>
+    <?php echo $this->headTitle('ZfDeals') ?>
 
     <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
@@ -31,24 +31,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?php echo $this->url('zf-deals\admin\home') ?>"><?php echo $this->translate('ZfDeals - Administration') ?></a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produkte <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<?php echo $this->url('zf-deals\admin\product\add') ?>">Produkt hinzufügen</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Deals <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<?php echo $this->url('zf-deals\admin\deal\add') ?>">Deal hinzufügen</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
+          <a class="brand" href="<?php echo $this->url('zf-deals\admin\home') ?>"><?php echo $this->translate('ZfDeals') ?></a>
+
         </div>
       </div>
     </div>

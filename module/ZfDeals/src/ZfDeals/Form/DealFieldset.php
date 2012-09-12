@@ -5,45 +5,48 @@ use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class ProductFieldset extends Fieldset implements InputFilterProviderInterface
+class DealFieldset extends Fieldset implements InputFilterProviderInterface
 {
     public function __construct()
     {
-        parent::__construct('product');
+        parent::__construct('deal');
 
         $this->add(
             array(
-                'name' => 'id',
-                'attributes' => array(
-                    'type'  => 'text',
-                ),
-                'options' => array(
-                    'label' => 'Produkt-ID:',
-                )
+                'name' => 'product',
+                'type' => 'ZfDeals\Form\ProductSelectorFieldset',
             )
         );
 
-
         $this->add(
             array(
-                'name' => 'name',
+                'name' => 'price',
+                'type' => 'Zend\Form\Element\Number',
                 'attributes' => array(
                     'type'  => 'text',
                 ),
                 'options' => array(
-                    'label' => 'Produktbezeichnung:',
+                    'label' => 'Price:',
                 )
             )
         );
 
         $this->add(
             array(
-                'name' => 'stock',
-                'attributes' => array(
-                    'type'  => 'number',
-                ),
+                'name' => 'startDate',
+                'type' => 'Zend\Form\Element\Date',
                 'options' => array(
-                    'label' => '# Bestand:'
+                    'label' => 'Startdatum:'
+                ),
+            )
+        );
+
+        $this->add(
+            array(
+                'name' => 'endDate',
+                'type' => 'Zend\Form\Element\Date',
+                'options' => array(
+                    'label' => 'Enddatum:'
                 ),
             )
         );
@@ -52,7 +55,7 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return array(
-            'id' => array (
+            'price' => array (
                 'required'   => true,
                 'filters' => array(
                     array(
@@ -68,23 +71,7 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
                     )
                 )
             ),
-            'name' => array (
-                'required'   => true,
-                'filters' => array(
-                    array(
-                       'name' => 'StringTrim'
-                    )
-                ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Bitte geben Sie eine Produktbezeichnung an."
-                        ),
-                    )
-                )
-            ),
-            'stock' => array (
+            'startDate' => array (
                 'required'   => true,
                 'filters' => array(
                     array(
@@ -99,18 +86,33 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
                         ),
                     ),
                     array(
-                        'name' => 'Digits',
+                        'name' => 'Date',
                         'options' => array(
                             'message'  => "Bitte geben Sie einen ganzzahligen Wert an."
                         ),
                     ),
+                )
+            ),
+            'endDate' => array (
+                'required'   => true,
+                'filters' => array(
                     array(
-                        'name' => 'GreaterThan',
-                        'options' => array(
-                            'min' => 0,
-                            'message'  => "Bitte geben Sie Wert >= 0 an."
-                        ),
+                       'name' => 'StringTrim'
                     )
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'NotEmpty',
+                        'options' => array(
+                            'message'  => "Bitte geben Sie die Lagerbestand an."
+                        ),
+                    ),
+                    array(
+                        'name' => 'Date',
+                        'options' => array(
+                            'message'  => "Bitte geben Sie einen ganzzahligen Wert an."
+                        ),
+                    ),
                 )
             ),
         );

@@ -8,10 +8,26 @@ class Module
     public function init(ModuleManager $moduleManager)
     {
         $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
-        $sharedEvents->attach('ZfDeals\Controller\AdminController', 'dispatch', function($e) {
-            $controller = $e->getTarget();
-            $controller->layout('zf-deals/layout/admin');
-        }, 100);
+
+        $sharedEvents->attach(
+            'ZfDeals\Controller\AdminController',
+            'dispatch',
+            function ($e) {
+                $controller = $e->getTarget();
+                $controller->layout('zf-deals/layout/admin');
+            },
+            100
+        );
+
+        $sharedEvents->attach(
+            'ZfDeals\Controller\IndexController',
+            'dispatch',
+            function ($e) {
+                $controller = $e->getTarget();
+                $controller->layout('zf-deals/layout/site');
+            },
+            100
+        );
     }
 
     public function getConfig()
@@ -30,3 +46,4 @@ class Module
         );
     }
 }
+

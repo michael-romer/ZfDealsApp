@@ -18,16 +18,26 @@ class Product extends TableGateway
 
     public function __construct($adapter)
     {
-        parent::__construct($this->tableName,
-            $adapter,
-            new RowGatewayFeature($this->idCol)
+        parent::__construct(
+            $this->tableName,
+            $adapter
         );
 
         $this->entityPrototype = new ProductEntity();
         $this->hydrator = new \Zend\Stdlib\Hydrator\Reflection;
     }
 
-    public function insert($entity) {
+    public function findOneById($id)
+    {
+        return $this->hydrator->hydrate(
+            $this->select(array('id' => $id))->current()->getArrayCopy(),
+            new $this->entityPrototype()
+        );
+    }
+
+    public function insert($entity)
+    {
         return parent::insert($this->hydrator->extract($entity));
     }
 }
+
