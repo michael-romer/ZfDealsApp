@@ -63,7 +63,6 @@ class AdminController extends AbstractActionController
         $fieldElements = array();
 
         foreach ($products as $product) {
-            $product = $product->toArray();
             $fieldElements[$product['id']] = $product['name'];
         }
 
@@ -91,6 +90,7 @@ class AdminController extends AbstractActionController
 
                 return $model;
             } else {
+                //var_dump($form->getInputFilter());exit;
                 return new ViewModel(
                     array(
                         'form' => $form

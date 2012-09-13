@@ -23,10 +23,10 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
                 'name' => 'price',
                 'type' => 'Zend\Form\Element\Number',
                 'attributes' => array(
-                    'type'  => 'text',
+                    'step' => 'any'
                 ),
                 'options' => array(
-                    'label' => 'Price:',
+                    'label' => 'Preis:',
                 )
             )
         );
@@ -55,8 +55,7 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return array(
-            'price' => array (
-                'required'   => true,
+            'price' => array(
                 'filters' => array(
                     array(
                        'name' => 'StringTrim'
@@ -66,7 +65,14 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
                     array(
                         'name' => 'NotEmpty',
                         'options' => array(
-                            'message'  => "Bitte geben Sie die Produkt-ID an."
+                            'message'  => "Bitte geben Sie einen Preis an."
+                        ),
+                    ),
+                    array(
+                        'name' => 'Regex',
+                        'options' => array(
+                            'pattern' => '/^[0-9]*\.[0-9]2$/',
+                            'message'  => "Bitte geben Sie einen gültigen Preis ein."
                         ),
                     )
                 )
@@ -80,15 +86,9 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
                 ),
                 'validators' => array(
                     array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Bitte geben Sie die Lagerbestand an."
-                        ),
-                    ),
-                    array(
                         'name' => 'Date',
                         'options' => array(
-                            'message'  => "Bitte geben Sie einen ganzzahligen Wert an."
+                            'message'  => "Bitte geben Sie ein Datum ein."
                         ),
                     ),
                 )
@@ -102,15 +102,9 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
                 ),
                 'validators' => array(
                     array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Bitte geben Sie die Lagerbestand an."
-                        ),
-                    ),
-                    array(
                         'name' => 'Date',
                         'options' => array(
-                            'message'  => "Bitte geben Sie einen ganzzahligen Wert an."
+                            'message'  => "Bitte geben Sie ein Datum ein."
                         ),
                     ),
                 )

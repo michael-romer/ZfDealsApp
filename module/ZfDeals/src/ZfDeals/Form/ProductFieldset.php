@@ -53,7 +53,7 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     {
         return array(
             'id' => array (
-                'required'   => true,
+                'required' => true,
                 'filters' => array(
                     array(
                        'name' => 'StringTrim'
@@ -69,7 +69,7 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
                 )
             ),
             'name' => array (
-                'required'   => true,
+                'required' => true,
                 'filters' => array(
                     array(
                        'name' => 'StringTrim'
