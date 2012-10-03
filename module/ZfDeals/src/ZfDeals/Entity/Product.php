@@ -37,4 +37,3 @@ class Product
         return $this->stock;
     }
 }
-

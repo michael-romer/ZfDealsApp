@@ -50,4 +50,3 @@ class IndexController extends AbstractActionController
         return $this->productMapper;
     }
 }
-

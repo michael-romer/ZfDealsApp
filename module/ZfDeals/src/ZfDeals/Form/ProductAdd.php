@@ -31,4 +31,3 @@ class ProductAdd extends Form
         );
     }
 }
-

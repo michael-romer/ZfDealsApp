@@ -1,0 +1,11 @@
+<div class="alert alert-error">Deal konnte nicht hinzugefügt werden.</div>
+
+<?php
+$this->form->prepare();
+echo $this->form()->openTag($this->form);
+echo $this->formRowTwb($this->form->get('deal')->get('product')->get('id'));
+echo $this->formRowTwb($this->form->get('deal')->get('price'));
+echo $this->formRow($this->form->get('deal')->get('startDate'));
+echo $this->formRow($this->form->get('deal')->get('endDate'));
+echo $this->formSubmitTwb($this->form->get('submit'));
+echo $this->form()->closeTag();

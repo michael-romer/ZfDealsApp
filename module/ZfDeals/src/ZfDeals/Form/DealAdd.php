@@ -9,7 +9,7 @@ class DealAdd extends Form
 {
     public function __construct()
     {
-        parent::__construct('login');
+        parent::__construct('dealAdd');
         $this->setAttribute('action', '/deals/admin/deal/add');
         $this->setAttribute('method', 'post');
 
@@ -33,4 +33,3 @@ class DealAdd extends Form
         );
     }
 }
-

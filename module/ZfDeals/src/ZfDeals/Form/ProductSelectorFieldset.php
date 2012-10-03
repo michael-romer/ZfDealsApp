@@ -31,7 +31,7 @@ class ProductSelectorFieldset extends Fieldset implements InputFilterProviderInt
     public function getInputFilterSpecification()
     {
         return array(
-            'id' => array (
+            'id' => array(
                 'required'   => true,
                 'filters' => array(
                     array(
@@ -50,4 +50,3 @@ class ProductSelectorFieldset extends Fieldset implements InputFilterProviderInt
         );
     }
 }
-

@@ -40,4 +40,3 @@ class Product extends TableGateway
         return parent::insert($this->hydrator->extract($entity));
     }
 }
-

@@ -9,7 +9,7 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "dev-master",
+        "zendframework/zendframework": "2.*",
         "zfb/zfb-vm": "dev-master",
         "dlu/dlutwbootstrap": "dev-master"
     }

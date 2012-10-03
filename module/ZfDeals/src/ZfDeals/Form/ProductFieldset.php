@@ -95,7 +95,7 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
                     array(
                         'name' => 'NotEmpty',
                         'options' => array(
-                            'message'  => "Bitte geben Sie die Lagerbestand an."
+                            'message'  => "Bitte geben Sie den Lagerbestand an."
                         ),
                     ),
                     array(
@@ -116,4 +116,3 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
         );
     }
 }
-

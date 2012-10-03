@@ -59,4 +59,3 @@ class Deal
         return $this->product;
     }
 }
-

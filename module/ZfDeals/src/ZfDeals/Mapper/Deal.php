@@ -39,7 +39,6 @@ class Deal extends TableGateway
         $select = $sql->select()
             ->from($this->tableName)
             ->join('product', 'deal.product=product.id')
-            ->where('product = "DEHSG445645"')
             ->where('DATE(startDate) <= DATE(NOW())')
             ->where('DATE(endDate) >= DATE(NOW())')
             ->where('stock > 0');
@@ -60,4 +59,3 @@ class Deal extends TableGateway
         return $deals->initialize($results);
     }
 }
-
