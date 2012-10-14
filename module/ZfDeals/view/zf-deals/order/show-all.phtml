@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <tr>
+        <th><?php echo $this->translate('Order-ID');?></th>
+        <th><?php echo $this->translate('Deal-ID');?></th>
+        <th><?php echo $this->translate('Firstname');?></th>
+        <th><?php echo $this->translate('Lastname');?></th>
+        <th><?php echo $this->translate('Street');?></th>
+        <th><?php echo $this->translate('Zip');?></th>
+        <th><?php echo $this->translate('City');?></th>
+    </tr>
+    <?php foreach($this->orders as $order) { ?>
+    <tr>
+        <td><?php echo $order->orderId; ?></td>
+        <td><?php echo $order->deal; ?></td>
+        <td><?php echo $order->firstname; ?></td>
+        <td><?php echo $order->lastname; ?></td>
+        <td><?php echo $order->street; ?></td>
+        <td><?php echo $order->zip; ?></td>
+        <td><?php echo $order->city; ?></td>
+    </tr>
+    <?php } ?>
+</table>

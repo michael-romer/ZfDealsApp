@@ -3,7 +3,7 @@ namespace ZfDeals\Entity;
 
 class Deal
 {
-    protected $id;
+    protected $dealId;
     protected $price;
     protected $startDate;
     protected $endDate;
@@ -29,14 +29,14 @@ class Deal
         return $this->startDate;
     }
 
-    public function setId($id)
+    public function setDealId($dealId)
     {
-        $this->id = $id;
+        $this->dealId = $dealId;
     }
 
-    public function getId()
+    public function getDealId()
     {
-        return $this->id;
+        return $this->dealId;
     }
 
     public function setPrice($price)

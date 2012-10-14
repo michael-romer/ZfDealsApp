@@ -1,7 +1,7 @@
 <?php if ($this->success) { ?>
-<div class="alert alert-success">Produkt hinzugefügt!</div>
+<div class="alert alert-success"><?php echo $this->translate('Product added!') ?></div>
 <?php } ?>
 
 <?php if ($this->insertError) { ?>
-<div class="alert alert-error">Produkt konnte nicht hinzugefügt werden.</div>
+<div class="alert alert-error"><?php echo $this->translate('Produkt konnte nicht hinzugefügt werden.') ?></div>
 <?php } ?>

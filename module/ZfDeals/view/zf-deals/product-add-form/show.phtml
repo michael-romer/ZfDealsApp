@@ -1,7 +1,7 @@
 <?php
 $this->form->prepare();
 echo $this->form()->openTag($this->form);
-echo $this->formRowTwb($this->form->get('product')->get('id'));
+echo $this->formRowTwb($this->form->get('product')->get('productId'));
 echo $this->formRowTwb($this->form->get('product')->get('name'));
 echo $this->formRowTwb($this->form->get('product')->get('stock'));
 echo $this->formSubmitTwb($this->form->get('submit'));

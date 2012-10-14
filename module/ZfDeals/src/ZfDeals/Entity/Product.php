@@ -3,9 +3,19 @@ namespace ZfDeals\Entity;
 
 class Product
 {
-    protected $id;
+    protected $productId;
     protected $name;
     protected $stock;
+
+    public function setProductId($productId)
+    {
+        $this->productId = $productId;
+    }
+
+    public function getProductId()
+    {
+        return $this->productId;
+    }
 
     public function setName($name)
     {
@@ -15,16 +25,6 @@ class Product
     public function getName()
     {
         return $this->name;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function setStock($stock)

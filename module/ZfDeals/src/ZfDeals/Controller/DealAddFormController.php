@@ -20,10 +20,10 @@ class DealAddFormController extends AbstractFormController
         $fieldElements = array();
 
         foreach ($products as $product) {
-            $fieldElements[$product['id']] = $product['name'];
+            $fieldElements[$product['productId']] = $product['name'];
         }
 
-        $this->form->get('deal')->get('product')->get('id')->setValueOptions($fieldElements);
+        $this->form->get('deal')->get('product')->get('productId')->setValueOptions($fieldElements);
     }
 
     public function process()
@@ -35,7 +35,7 @@ class DealAddFormController extends AbstractFormController
         );
 
         $newDeal = $this->form->getData();
-        $newDeal->setProduct($newDeal->getProduct()->getId());
+        $newDeal->setProduct($newDeal->getProduct()->getProductId());
 
         try {
             $this->dealMapper->insert($newDeal);

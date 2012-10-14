@@ -36,16 +36,22 @@
             <ul class="nav">
               <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produkte <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->translate('Products'); ?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?php echo $this->url('zf-deals\admin\product\add') ?>">Produkt hinzufügen</a></li>
+                  <li><a href="<?php echo $this->url('zf-deals\admin\product\add') ?>"><?php echo $this->translate('Add Product'); ?></a></li>
                 </ul>
               </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Deals <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->translate('Deals'); ?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?php echo $this->url('zf-deals\admin\deal\add') ?>">Deal hinzufügen</a></li>
-                  <li><a href="<?php echo $this->url('zf-deals') ?>" target="_blank">Aktuelle Deals ansehen</a></li>
+                  <li><a href="<?php echo $this->url('zf-deals\admin\deal\add') ?>"><?php echo $this->translate('Add Deal'); ?></a></li>
+                  <li><a href="<?php echo $this->url('zf-deals') ?>" target="_blank"><?php echo $this->translate('Show active Deals'); ?></a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->translate('Orders'); ?> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<?php echo $this->url('zf-deals\admin\orders\show') ?>"><?php echo $this->translate('Show orders'); ?></a></li>
                 </ul>
               </li>
             </ul>

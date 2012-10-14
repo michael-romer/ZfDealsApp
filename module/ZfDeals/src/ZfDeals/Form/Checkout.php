@@ -2,20 +2,18 @@
 namespace ZfDeals\Form;
 
 use Zend\Form\Form;
-use Zend\ServiceManager\ServiceManager;
-use Zend\ServiceManager\ServiceManagerAwareInterface;
 
-class DealAdd extends Form
+class Checkout extends Form
 {
     public function __construct()
     {
-        parent::__construct('dealAdd');
-        $this->setAttribute('action', '/deals/admin/deal/add');
+        parent::__construct('login');
+        $this->setAttribute('action', '/deals/checkout');
         $this->setAttribute('method', 'post');
 
         $this->add(
             array(
-                'type' => 'ZfDeals\Form\DealFieldset',
+                'type' => 'ZfDeals\Form\OrderFieldset',
                 'options' => array(
                     'use_as_base_fieldset' => true
                 )
@@ -27,7 +25,7 @@ class DealAdd extends Form
                 'name' => 'submit',
                 'attributes' => array(
                     'type'  => 'submit',
-                    'value' => 'Add Deal'
+                    'value' => 'Place order'
                 ),
             )
         );

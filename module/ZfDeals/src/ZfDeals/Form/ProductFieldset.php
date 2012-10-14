@@ -13,12 +13,10 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(
             array(
-                'name' => 'id',
-                'attributes' => array(
-                    'type'  => 'text',
-                ),
+                'name' => 'productId',
+                'type' => 'Zend\Form\Element\Text',
                 'options' => array(
-                    'label' => 'Produkt-ID:',
+                    'label' => 'Product-ID',
                 )
             )
         );
@@ -27,11 +25,9 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
         $this->add(
             array(
                 'name' => 'name',
-                'attributes' => array(
-                    'type'  => 'text',
-                ),
+                'type' => 'Zend\Form\Element\Text',
                 'options' => array(
-                    'label' => 'Produktbezeichnung:',
+                    'label' => 'Product label',
                 )
             )
         );
@@ -39,11 +35,13 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
         $this->add(
             array(
                 'name' => 'stock',
+                'type' => 'Zend\Form\Element\Number',
                 'attributes' => array(
-                    'type'  => 'number',
+                    'step' => 1,
+                    'min' => 0
                 ),
                 'options' => array(
-                    'label' => '# Bestand:'
+                    'label' => 'Trading stock'
                 ),
             )
         );
@@ -52,21 +50,13 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return array(
-            'id' => array (
+            'productId' => array (
                 'required' => true,
                 'filters' => array(
                     array(
                        'name' => 'StringTrim'
                     )
                 ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Bitte geben Sie die Produkt-ID an."
-                        ),
-                    )
-                )
             ),
             'name' => array (
                 'required' => true,
@@ -75,44 +65,7 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
                        'name' => 'StringTrim'
                     )
                 ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Bitte geben Sie eine Produktbezeichnung an."
-                        ),
-                    )
-                )
-            ),
-            'stock' => array (
-                'required'   => true,
-                'filters' => array(
-                    array(
-                       'name' => 'StringTrim'
-                    )
-                ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Bitte geben Sie den Lagerbestand an."
-                        ),
-                    ),
-                    array(
-                        'name' => 'Digits',
-                        'options' => array(
-                            'message'  => "Bitte geben Sie einen ganzzahligen Wert an."
-                        ),
-                    ),
-                    array(
-                        'name' => 'GreaterThan',
-                        'options' => array(
-                            'min' => 0,
-                            'message'  => "Bitte geben Sie Wert >= 0 an."
-                        ),
-                    )
-                )
-            ),
+            )
         );
     }
 }

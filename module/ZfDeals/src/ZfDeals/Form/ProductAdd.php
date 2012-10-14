@@ -25,7 +25,7 @@ class ProductAdd extends Form
                 'name' => 'submit',
                 'attributes' => array(
                     'type'  => 'submit',
-                    'value' => 'Hinzufügen'
+                    'value' => 'Add Product'
                 ),
             )
         );

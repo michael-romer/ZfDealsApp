@@ -22,10 +22,10 @@ class DealAddFormControllerTest extends \PHPUnit_Framework_TestCase
 
         $ctr->getProductMapper()->expects($this->once())
             ->method('select')
-            ->will($this->returnValue(array(array('id' => 1, 'name' => 'Test-Product'))));
+            ->will($this->returnValue(array(array('productId' => 1, 'name' => 'Test-Product'))));
 
         $ctr->prepare();
-        $values = $ctr->getForm()->get('deal')->get('product')->get('id')->getValueOptions();
+        $values = $ctr->getForm()->get('deal')->get('product')->get('productId')->getValueOptions();
         $this->assertEquals(array(1 => 'Test-Product'), $values);
     }
 
@@ -64,7 +64,7 @@ class DealAddFormControllerTest extends \PHPUnit_Framework_TestCase
     {
         $deal = new Deal();
         $product = new Product();
-        $product->setId(1);
+        $product->setProductId(1);
         $deal->setProduct($product);
         return $deal;
     }

@@ -7,23 +7,30 @@ class Module
 {
     public function init(\Zend\ModuleManager\ModuleManager $moduleManager)
     {
-        $this->configureLayoutForController(
-            $moduleManager,
-            'ZfDeals\Controller\ProductAddFormController',
-            'zf-deals/layout/admin'
+        $layoutConfig = array(
+            'admin' => array(
+                'ZfDeals\Controller\ProductAddFormController',
+                'ZfDeals\Controller\DealAddFormController',
+                'ZfDeals\Controller\AdminController',
+                'ZfDeals\Controller\OrderController',
+            ),
+            'site' => array(
+                'ZfDeals\Controller\IndexController',
+                'ZfDeals\Controller\CheckoutFormController',
+            )
         );
 
-        $this->configureLayoutForController(
-            $moduleManager,
-            'ZfDeals\Controller\DealAddFormController',
-            'zf-deals/layout/admin'
-        );
-
-        $this->configureLayoutForController(
-            $moduleManager,
-            'ZfDeals\Controller\IndexController',
-            'zf-deals/layout/site'
-        );
+        foreach($layoutConfig as $layout => $controllers)
+        {
+            foreach($controllers as $controller)
+            {
+                $this->configureLayoutForController(
+                    $moduleManager,
+                    $controller,
+                    "zf-deals/layout/$layout"
+                );
+            }
+        }
     }
 
     private function configureLayoutForController($moduleManager, $controller, $layout)

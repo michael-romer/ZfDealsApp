@@ -8,7 +8,9 @@ nbproject
 .settings
 composer.lock
 .vagrant
+vendor/bin
 vendor/zfb
 vendor/kriswallsmith
 vendor/widmogrod
 vendor/dlu
+tests/reports

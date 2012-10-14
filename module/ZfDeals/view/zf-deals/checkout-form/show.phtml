@@ -1,0 +1,11 @@
+<?php
+$this->form->prepare();
+echo $this->form()->openTag($this->form);
+echo $this->formRow($this->form->get('order')->get('deal_id'));
+echo $this->formRowTwb($this->form->get('order')->get('firstname'));
+echo $this->formRowTwb($this->form->get('order')->get('lastname'));
+echo $this->formRowTwb($this->form->get('order')->get('street'));
+echo $this->formRowTwb($this->form->get('order')->get('zip'));
+echo $this->formRowTwb($this->form->get('order')->get('city'));
+echo $this->formSubmitTwb($this->form->get('submit'));
+echo $this->form()->closeTag();

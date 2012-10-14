@@ -5,4 +5,9 @@
       <directory>./ZfDealsTest/ControllerTest</directory>
     </testsuite>
   </testsuites>
+  <logging>
+    <log type="coverage-html" target="./reports/coverage" charset="UTF-8"
+      yui="true" highlight="false"
+      lowUpperBound="35" highLowerBound="70" />
+  </logging>
 </phpunit>

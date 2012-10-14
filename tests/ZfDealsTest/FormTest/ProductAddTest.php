@@ -13,7 +13,7 @@ class ProductAddTest extends \PHPUnit_Framework_TestCase
         $this->form = new ProductAdd();
         $this->data = array(
             'product' => array(
-                'id' => '',
+                'productId' => '',
                 'name' => '',
                 'stock' => ''
             )
@@ -27,7 +27,7 @@ class ProductAddTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($form->setData($data)->isValid());
 
-        $data['product']['id'] = 1;
+        $data['product']['productId'] = 1;
         $this->assertFalse($form->setData($data)->isValid());
 
         $data['product']['name'] = 1;
@@ -41,7 +41,7 @@ class ProductAddTest extends \PHPUnit_Framework_TestCase
     {
         $form = $this->form;
         $data = $this->data;
-        $data['product']['id'] = 1;
+        $data['product']['productId'] = 1;
         $data['product']['name'] = 1;
 
         $data['product']['stock'] = -1;

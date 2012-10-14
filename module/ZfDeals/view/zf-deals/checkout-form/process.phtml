@@ -1,0 +1,7 @@
+<?php if ($this->success) { ?>
+<div class="alert alert-success"><?php echo $this->translate('Order placed!') ?></div>
+<?php } ?>
+
+<?php if ($this->insertError) { ?>
+<div class="alert alert-error"><?php echo $this->translate('Order could not be placed.') ?></div>
+<?php } ?>
